@@ -1,0 +1,23 @@
+<template>
+  <div class="spa">
+    <NavigationObj />
+    <main><UserProfileObj /></main>
+  </div>
+</template>
+
+<script>
+import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
+import UserProfileObj from "@/components/spaObjects/UserProfileObj.vue";
+
+export default {
+  components: {
+    NavigationObj,
+    UserProfileObj,
+  },
+  data() {},
+};
+</script>
+
+<style lang="scss">
+@import "@/style/spaStyle.css";
+</style>

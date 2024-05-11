@@ -1,0 +1,39 @@
+<template>
+  <NavbarObj />
+  <HomeHeaderObj />
+  <AboutObj />
+  <ActivitiesObj />
+  <ClassesObj />
+  <TeachersObj />
+  <FooterObj />
+  <BackToTopObj />
+</template>
+
+<script>
+import NavbarObj from "@/components/visitCardObjects/NavbarObj.vue";
+import HomeHeaderObj from "@/components/visitCardObjects/HomeHeaderObj.vue";
+import AboutObj from "@/components/visitCardObjects/AboutObj.vue";
+import ActivitiesObj from "@/components/visitCardObjects/ActivitiesObj.vue";
+import ClassesObj from "@/components/visitCardObjects/ClassesObj.vue";
+import TeachersObj from "@/components/visitCardObjects/TeachersObj.vue";
+import FooterObj from "@/components/visitCardObjects/FooterObj.vue";
+import BackToTopObj from "@/components/visitCardObjects/BackToTopObj.vue";
+
+export default {
+  components: {
+    NavbarObj,
+    HomeHeaderObj,
+    FooterObj,
+    AboutObj,
+    ActivitiesObj,
+    ClassesObj,
+    TeachersObj,
+    BackToTopObj,
+  },
+  data() {},
+};
+</script>
+
+<style scoped>
+@import "@/style/style.css";
+</style>

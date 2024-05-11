@@ -1,0 +1,5 @@
+<template>
+  <main>
+    <h1>500</h1>
+  </main>
+</template>

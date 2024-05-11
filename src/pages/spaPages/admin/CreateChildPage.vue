@@ -1,0 +1,34 @@
+<template>
+  <div class="spa">
+    <NavigationObj />
+    <main>
+      <HeaderObj />
+      <CreateChildObj :familyId="familyId" />
+    </main>
+  </div>
+</template>
+
+<script>
+import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
+import HeaderObj from "@/components/spaObjects/HeaderObj.vue";
+import CreateChildObj from "@/components/spaObjects/CreateChildObj.vue";
+
+export default {
+  components: {
+    NavigationObj,
+    HeaderObj,
+    CreateChildObj,
+  },
+  props: {
+    familyId: {
+      type: Number,
+      required: true,
+    },
+  },
+  data() {},
+};
+</script>
+
+<style lang="scss">
+@import "@/style/spaStyle.css";
+</style>
