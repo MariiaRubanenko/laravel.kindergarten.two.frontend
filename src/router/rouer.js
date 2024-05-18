@@ -1,6 +1,6 @@
 import HomePage from "@/pages/visitCardPages/HomePage.vue";
 import LocationPage from "@/pages/visitCardPages/LocationPage.vue";
-import ContactPage from "@/pages/visitCardPages/ContactPage.vue";
+import FeedbackPage from "@/pages/visitCardPages/FeedbackPage.vue";
 import GalleryPage from "@/pages/visitCardPages/GalleryPage.vue";
 
 import Error404Page from "@/pages/errors/Error404Page.vue";
@@ -19,6 +19,8 @@ import GroupStaffPage from "@/pages/spaPages/admin/GroupStaffPage.vue";
 import StaffPage from "@/pages/spaPages/admin/StaffPage.vue";
 import PaymentSettingsPage from "@/pages/spaPages/admin/PaymentSettingsPage.vue";
 
+import CommunicationPage from "@/pages/spaPages/CommunicationPage.vue";
+
 import AttendancePage from "@/pages/spaPages/AttendancePage.vue";
 import ChildProfilePage from "@/pages/spaPages/ChildProfilePage.vue";
 import StaffProfilePage from "@/pages/spaPages/StaffProfilePage.vue";
@@ -31,6 +33,7 @@ import StaffOfGroupProfilePage from "@/pages/spaPages/teacher/StaffOfGroupProfil
 
 import AppDownloadPage from "@/pages/spaPages/parent/AppDownloadPage.vue";
 import PaymentPage from "@/pages/spaPages/parent/PaymentPage.vue";
+import FeedbackSendPage from "@/pages/spaPages/parent/FeedbackSendPage.vue";
 
 import BillPage from "@/pages/spaPages/BillPage.vue";
 
@@ -40,7 +43,7 @@ const routes = [
   // Страницы визитки (доступ для всех)
   { path: "/", name: "Home", component: HomePage },
   { path: "/location", name: "Location", component: LocationPage },
-  { path: "/contact", name: "Contact", component: ContactPage },
+  { path: "/feedback", name: "Feedback", component: FeedbackPage },
   { path: "/gallery", name: "Gallery", component: GalleryPage },
 
   { path: "/404", name: "404 Page", component: Error404Page },
@@ -169,12 +172,23 @@ const routes = [
     component: UserProfilePage,
     meta: { requiresAuth: true, roles: ["teacher", "parent"] },
   },
-
+  {
+    path: "/communication",
+    name: "Communication",
+    component: CommunicationPage,
+    meta: { requiresAuth: true, roles: ["teacher", "admin"] },
+  },
   // Страницы учителя (доступ только для родителя)
   {
     path: "/appDownload",
     name: "Mobile App Download",
     component: AppDownloadPage,
+    meta: { requiresAuth: true, roles: ["parent"] },
+  },
+  {
+    path: "/feedbackSend/:familyId",
+    name: "Feedback Send",
+    component: FeedbackSendPage,
     meta: { requiresAuth: true, roles: ["parent"] },
   },
   {

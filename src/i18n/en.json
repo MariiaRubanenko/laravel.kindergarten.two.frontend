@@ -5,6 +5,7 @@
       "home": "Home",
       "location": "Location",
       "gallery": "Gallery",
+      "feedback": "Feedback",
       "contacts": "Contacts"
     },
     "buttons": {
@@ -18,7 +19,8 @@
     "Home": "Home",
     "Location": "Location",
     "Gallery": "Gallery",
-    "Contact": "Contacts"
+    "Contact": "Contacts",
+    "Feedback": "Feedback"
   },
 
   "homeHeader": {
@@ -166,6 +168,24 @@
     }
   },
 
+  "feedback": {
+    "title": "Our Users Feedback",
+    "tagline": "Сheck Out The Comments Of Our Parents",
+    "comments": {
+      "name": {
+        "label": "Name"
+      },
+      "date": {
+        "label": "Date"
+      },
+      "comment": {
+        "label": "Comment"
+      }
+    },
+    "dataLoadingError": "Error during loading comments!",
+    "dataNo": "There are no comments yet!"
+  },
+
   "contacts": {
     "title": "Get In Touch",
     "tagline": "Contact Us For Any Query",
@@ -184,7 +204,7 @@
     "sendButton": "Send Message",
     "formErrors": {
       "email": "Enter your email",
-      "name": "Entwer your name"
+      "name": "Enter your name"
     }
   },
 
@@ -222,7 +242,8 @@
       "find": "Find",
       "yes": "Yes",
       "no": "No",
-      "change": "Change"
+      "change": "Change",
+      "send": "Send"
     }
   },
 
@@ -268,6 +289,8 @@
     "paymentSettings": "Payment Settings",
     "mobileApp": "Mobile App",
     "payment": "Payment",
+    "feedback": "Please give feedback",
+    "communication": "Communication",
     "settings": "Settings",
     "logout": "Logout"
   },
@@ -568,11 +591,29 @@
     }
   },
 
+  "feedbackSend": {
+    "title": "Please leave a comment about the services of our kindergarten!",
+    "comment": {
+      "placeholder": "Your feedback is very important to us!"
+    }
+  },
+
+  "communication": {
+    "title": "Communication with parents",
+    "email": {
+      "label": "User",
+      "placeholder": "Choose parent"
+    },
+    "mail": { "placeholder": "Write email for sending to parent" }
+  },
+
   "loading": {
     "activities": "Error while loading activities!",
     "days": "Error while loading days!",
     "user": "Error while loading information about user!",
     "bill": "Error while loading bill!",
+    "dailyPrices": "Error while loading daily prices!",
+    "payments": "Error while loading payments!",
     "months": "Error while loading months!"
   }
 }

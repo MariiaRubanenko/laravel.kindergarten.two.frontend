@@ -20,7 +20,7 @@
           :errorMessage="
             v$.name.$error
               ? v$.name.$errors[0].$message
-              : validated
+              : validation.name
               ? validation.name[0]
               : ''
           "
@@ -59,7 +59,7 @@
           :errorMessage="
             v$.birthday.$error
               ? v$.birthday.$errors[0].$message
-              : validated
+              : validation.birthday
               ? validation.birthday[0]
               : ''
           "

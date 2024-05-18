@@ -3,7 +3,11 @@
     <NavigationObj />
     <main>
       <HeaderObj />
-      <StaffsOfGroupObj />
+      <div class="row justify-content-center">
+        <div class="col-lg-7 mb-5">
+          <StaffsOfGroupObj />
+        </div>
+      </div>
     </main>
   </div>
 </template>

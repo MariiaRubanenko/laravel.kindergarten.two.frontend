@@ -3,19 +3,52 @@
     <div class="container">
       <div class="row align-items-center">
         <div class="col-lg-5">
-          <img
-            class="img-fluid-center rounded-fullcircle mb-5 mb-lg-5"
-            :src="getImageSource()"
-            alt=""
-            @click="$refs.fileInput.click()"
-          />
+          <div class="image-container">
+            <div
+              class="alert alert-danger mt-3 py-2"
+              role="alert"
+              v-if="validation.image"
+            >
+              {{ validation.image[0] }}
+            </div>
+            <img
+              class="img-fluid-center rounded-fullcircle"
+              :src="imgPreview ? imgPreview : getImageSource()"
+              alt=""
+              @click="$refs.fileInput.click()"
+              style="position: relative"
+            />
+            <div class="overlay" @click="$refs.fileInput.click()">
+              <i class="fas fa-edit edit-icon"></i>
+            </div>
+          </div>
+
           <input
             type="file"
             @change="onFileSelected"
             ref="fileInput"
             style="display: none"
+            accept=".png, .jpg, .jpeg"
+            maxFileSize="1000000"
           />
-          <button @click="uploadImage">Загрузить фото</button>
+          <div class="mb-5 mb-lg-5" v-if="!imgPreview"></div>
+
+          <div class="text-center mt-2 mb-4" v-if="imgPreview">
+            <button
+              class="btn btn-primary py-2 px-2.5 mr-2"
+              style="border-radius: 10px"
+              @click="confirmImageChange"
+            >
+              {{ $t("spa.buttons.change") }}
+            </button>
+            <button
+              class="btn btn-danger px-2.5"
+              style="border-radius: 10px"
+              @click="cancelImageChange"
+            >
+              {{ $t("spa.buttons.cancel") }}
+            </button>
+          </div>
         </div>
         <div class="col-lg-7">
           <h2 style="margin-bottom: 0.75rem">
@@ -49,7 +82,7 @@
               :errorMessage="
                 v$.newPhone.$error
                   ? v$.newPhone.$errors[0].$message
-                  : validated
+                  : validated.phone_number
                   ? validation.phone_number[0]
                   : ''
               "
@@ -93,7 +126,7 @@ import InfoBoxLoader from "@/components/Elements/InfoBoxLoader.vue";
 import Textbox from "@/components/Elements/TextBox.vue";
 
 import { useVuelidate } from "@vuelidate/core";
-import { required, minLength, maxLength } from "@vuelidate/validators";
+import { required } from "@vuelidate/validators";
 import { reactive, computed } from "vue";
 
 export default {
@@ -105,8 +138,6 @@ export default {
       return {
         newPhone: {
           required,
-          minLength: minLength(10),
-          maxLength: maxLength(15),
         },
       };
     });
@@ -123,7 +154,8 @@ export default {
         { label: "userProfile.email.label", property: "email" },
         { label: "userProfile.phone.label", property: "phone" },
       ],
-      selectedFile: null,
+      imageData: null,
+      imgPreview: null,
       errored: false,
       error: "Error",
       messaged: false,
@@ -132,7 +164,7 @@ export default {
       validation: {},
       loading: true,
       userRole: localStorage.getItem("userRole"),
-      userId: this.$route.params.userId,
+      userRoleId: this.$route.params.userId,
     };
   },
   mounted() {
@@ -146,7 +178,7 @@ export default {
   methods: {
     async fetchStuff() {
       try {
-        const response = await axios.get(`api/staffs/${this.userId}`, {
+        const response = await axios.get(`api/staffs/${this.userRoleId}`, {
           headers: {
             "X-XSRF-Token": getCookies("XSRF-TOKEN"),
           },
@@ -163,11 +195,14 @@ export default {
     },
     async fetchParent() {
       try {
-        const response = await axios.get(`api/family_accounts/${this.userId}`, {
-          headers: {
-            "X-XSRF-Token": getCookies("XSRF-TOKEN"),
-          },
-        });
+        const response = await axios.get(
+          `api/family_accounts/${this.userRoleId}`,
+          {
+            headers: {
+              "X-XSRF-Token": getCookies("XSRF-TOKEN"),
+            },
+          }
+        );
         this.user = response.data.data;
       } catch (error) {
         this.errored = true;
@@ -189,12 +224,13 @@ export default {
       if (!this.v$.$error) {
         try {
           if (this.userRole == "teacher") {
+            console.log(this.selectedFile);
             const staffForSending = {
               user_id: this.user.user_id,
               group_id: this.user.group_id,
               phone_number: this.changePhone.newPhone,
             };
-            await axios.put(`api/staffs/${this.userId}`, staffForSending, {
+            await axios.put(`api/staffs/${this.userRoleId}`, staffForSending, {
               headers: {
                 "X-XSRF-Token": getCookies("XSRF-TOKEN"),
               },
@@ -206,7 +242,7 @@ export default {
               phone_number: this.changePhone.newPhone,
             };
             await axios.put(
-              `api/family_accounts/${this.userId}`,
+              `api/family_accounts/${this.userRoleId}`,
               parentForSending,
               {
                 headers: {
@@ -236,42 +272,68 @@ export default {
     openFileInput() {
       this.$refs.fileInput.click();
     },
+    // Отображение выбранного изображения в предпросмотре
     onFileSelected(event) {
-      this.selectedFile = event.target.files[0];
-      console.log(this.selectedFile);
+      const file = event.target.files[0];
+
+      // Проверка наличия файла
+      if (!file) {
+        this.errored = true;
+        this.error = "No file selected";
+        console.error("No file selected");
+        return;
+      }
+
+      // Проверка типа файла (изображение)
+      if (!file.type.startsWith("image/")) {
+        this.errored = true;
+        this.error = "Selected file is not an image";
+        console.error("Selected file is not an image");
+        return;
+      }
+
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imgPreview = reader.result;
+      };
+      reader.readAsDataURL(file);
     },
-    async uploadImage() {
-      if (!this.selectedFile) {
+    // Подтверждение изменения изображения
+    confirmImageChange() {
+      this.imageData = this.imgPreview;
+      this.changeUserImage();
+    },
+    // Отмена изменения изображения
+    cancelImageChange() {
+      this.imgPreview = null;
+      this.$refs.fileInput.value = null;
+    },
+    async changeUserImage() {
+      if (!this.imageData) {
         return;
       }
       try {
+        let formData = new FormData();
+        formData.append("user_id", this.user.user_id);
+        formData.append("image", this.imageData);
         if (this.userRole == "teacher") {
           const response = await axios.put(
-            `api/staffs/${this.userId}`,
-            {
-              user_id: this.user.user_id,
-              group_id: this.user.group_id,
-              image: this.selectedFile.data,
-            },
+            `api/staffs/${this.userRoleId}`,
+            formData,
             {
               headers: {
-                "Content-Type": "multipart/form-data",
                 "X-XSRF-Token": getCookies("XSRF-TOKEN"),
               },
             }
           );
-          console.log(response.data);
+          console.log(response);
         }
         if (this.userRole == "parent") {
           const response = await axios.put(
-            `api/family_accounts/${this.userId}`,
-            {
-              user_id: this.user.user_id,
-              image: this.selectedFile.data,
-            },
+            `api/family_accounts/${this.userRoleId}`,
+            formData,
             {
               headers: {
-                "Content-Type": "multipart/form-data",
                 "X-XSRF-Token": getCookies("XSRF-TOKEN"),
               },
             }
@@ -281,7 +343,7 @@ export default {
         router.go();
       } catch (error) {
         console.error("Error while uploading photo:", error);
-        console.error("LogIn Error", error);
+        console.error("Error while uploading photo:", error);
         if (error.response.data.error) {
           this.errored = true;
           this.error = error.response.data.error;
@@ -299,3 +361,42 @@ export default {
   },
 };
 </script>
+
+<style>
+.edit-icon:hover {
+  color: var(--green-light);
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+}
+
+.img-fluid-center {
+  display: block;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.image-container:hover .overlay {
+  opacity: 1;
+}
+
+.edit-icon {
+  color: white;
+  font-size: 2em;
+}
+</style>

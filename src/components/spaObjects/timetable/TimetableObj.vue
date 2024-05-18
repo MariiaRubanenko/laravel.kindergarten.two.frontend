@@ -1,6 +1,9 @@
 <template>
-  <div class="alert alert-danger mb-4 py-2" role="alert" v-if="errored">
+  <div class="alert alert-danger py-2" role="alert" v-if="errored">
     {{ error }}
+  </div>
+  <div class="alert alert-danger mt-3 py-2" role="alert" v-if="messaged">
+    {{ message }}
   </div>
   <div class="timetable-container">
     <InfoLoader :loading="loadingOfLessons" />

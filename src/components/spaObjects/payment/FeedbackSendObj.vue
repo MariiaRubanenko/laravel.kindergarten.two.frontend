@@ -1,8 +1,8 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-lg-6 mb-5">
+    <div class="col-lg-7 mb-5">
       <h2 style="margin-bottom: 0.75rem">
-        {{ $t("groups.createGroup.title") }}
+        {{ $t("feedbackSend.title") }}
       </h2>
       <div class="alert alert-danger mb-3 py-2" role="alert" v-if="errored">
         {{ error }}
@@ -10,29 +10,27 @@
       <div class="alert alert-danger mb-3 py-2" role="alert" v-if="messaged">
         {{ message }}
       </div>
-      <form @submit.prevent="createGroup" novalidate="novalidate">
-        <Textbox
-          v-model="group.name"
-          id="name"
-          :type="'text'"
-          :placeholder="$t('groups.createGroup.placeholder')"
+      <form @submit.prevent="createComment" novalidate="novalidate">
+        <TextArea
+          v-model="comment.text"
+          :placeholder="$t('feedbackSend.comment.placeholder')"
           :required="true"
-          :label="$t('groups.createGroup.label')"
+          :rows="8"
           :errorMessage="
-            v$.name.$error
-              ? v$.name.$errors[0].$message
-              : validated
-              ? validation.name[0]
+            v$.text.$error
+              ? v$.text.$errors[0].$message
+              : validated.text
+              ? validation.text[0]
               : ''
           "
         />
         <div class="text-right" style="margin-top: -0.5rem">
           <button
             class="btn btn-primary py-2 px-2.5"
-            style="border-radius: 10px"
+            style="border-radius: 10px; width: 7rem"
             type="submit"
           >
-            {{ $t("spa.buttons.create") }}
+            {{ $t("spa.buttons.send") }}
           </button>
         </div>
       </form>
@@ -41,36 +39,36 @@
 </template>
 
 <script>
-import Textbox from "@/components/Elements/TextBox.vue";
 import axios from "axios";
 import router from "@/router/rouer.js";
 
-import { getCookies } from "@/api/request";
+import TextArea from "@/components/Elements/TextArea.vue";
 
+import { getCookies } from "@/api/request";
 import { useVuelidate } from "@vuelidate/core";
 import { required, minLength, maxLength } from "@vuelidate/validators";
 import { reactive, computed } from "vue";
 
 export default {
   components: {
-    Textbox,
+    TextArea,
   },
   setup() {
-    const group = reactive({ name: "" });
+    const comment = reactive({ text: "" });
 
     const rules = computed(() => {
       return {
-        name: {
+        text: {
           required,
           minLength: minLength(4),
-          maxLength: maxLength(50),
+          maxLength: maxLength(900),
         },
       };
     });
 
-    const v$ = useVuelidate(rules, group);
+    const v$ = useVuelidate(rules, comment);
 
-    return { group, v$ };
+    return { comment, v$ };
   },
   data() {
     return {
@@ -80,23 +78,29 @@ export default {
       message: "",
       validated: false,
       validation: {},
+      familyId: this.$route.params.familyId,
+      userRole: localStorage.getItem("userRole"),
     };
   },
   methods: {
-    async createGroup() {
+    async createComment() {
       this.v$.$validate();
       if (!this.v$.$error) {
         try {
-          const response = await axios.post("api/groups", this.group, {
+          const commentForSending = {
+            family_account_id: this.familyId,
+            text: this.comment.text,
+          };
+          const response = await axios.post("api/comment", commentForSending, {
             headers: {
               "X-XSRF-Token": getCookies("XSRF-TOKEN"),
             },
           });
-          console.log("Group created successfully:", response.data);
+          console.log("Comment sent successfully:", response.data);
           router.go();
         } catch (error) {
-          console.error("Error creating group:", error);
-          console.error("Error creating group:", error);
+          console.error("Error sending comment:", error);
+          console.error("Error sending comment:", error);
           if (error.response.data.error) {
             this.errored = true;
             this.error = error.response.data.error;

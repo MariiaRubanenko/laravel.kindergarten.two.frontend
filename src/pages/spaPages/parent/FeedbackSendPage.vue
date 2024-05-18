@@ -1,18 +1,23 @@
 <template>
   <div class="spa">
     <NavigationObj />
-    <main><UserProfileObj /></main>
+    <main>
+      <HeaderObj />
+      <FeedbackSendObj />
+    </main>
   </div>
 </template>
 
 <script>
 import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
-import UserProfileObj from "@/components/spaObjects/userProfile/UserProfileObj.vue";
+import HeaderObj from "@/components/spaObjects/HeaderObj.vue";
+import FeedbackSendObj from "@/components/spaObjects/payment/FeedbackSendObj.vue";
 
 export default {
   components: {
     NavigationObj,
-    UserProfileObj,
+    HeaderObj,
+    FeedbackSendObj,
   },
   data() {},
 };

@@ -3,6 +3,12 @@
     <h2 style="margin-bottom: 0.75rem">
       {{ $t("timetable.createLesson.title") }}
     </h2>
+    <div class="alert alert-danger py-2" role="alert" v-if="errored">
+      {{ error }}
+    </div>
+    <div class="alert alert-danger mt-3 py-2" role="alert" v-if="messaged">
+      {{ message }}
+    </div>
     <div class="control-group">
       <label class="label-light">{{
         $t("timetable.createLesson.activity.label")
@@ -47,7 +53,7 @@
       :errorMessage="
         v$.start_time.$error
           ? v$.start_time.$errors[0].$message
-          : validated
+          : validation.start_time
           ? validation.start_time[0]
           : ''
       "
@@ -60,7 +66,7 @@
       :errorMessage="
         v$.end_time.$error
           ? v$.end_time.$errors[0].$message
-          : validated
+          : validation.end_time
           ? validation.end_time[0]
           : ''
       "
@@ -73,9 +79,6 @@
       >
         {{ $t("spa.buttons.create") }}
       </button>
-    </div>
-    <div class="alert alert-danger py-2" role="alert" v-if="errored">
-      {{ error }}
     </div>
   </form>
 </template>

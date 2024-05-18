@@ -3,6 +3,12 @@
     <h2 style="margin-bottom: 0.75rem">
       {{ $t("timetable.createActivity.title") }}
     </h2>
+    <div class="alert alert-danger py-2" role="alert" v-if="errored">
+      {{ error }}
+    </div>
+    <div class="alert alert-danger mt-3 py-2" role="alert" v-if="messaged">
+      {{ message }}
+    </div>
     <Textbox
       v-model="activity.name"
       id="name"
@@ -25,9 +31,6 @@
       >
         {{ $t("spa.buttons.create") }}
       </button>
-    </div>
-    <div class="alert alert-danger py-2" role="alert" v-if="errored">
-      {{ error }}
     </div>
   </form>
 </template>

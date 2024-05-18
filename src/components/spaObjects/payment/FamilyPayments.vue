@@ -114,8 +114,8 @@ export default {
         console.log(response.data);
       } catch (error) {
         this.errored = true;
-        this.error = this.$t("");
-        console.error(this.$t(""), error);
+        this.error = this.$t("loading.payments");
+        console.error(this.$t("loading.payments"), error);
       } finally {
         this.loading = false;
       }

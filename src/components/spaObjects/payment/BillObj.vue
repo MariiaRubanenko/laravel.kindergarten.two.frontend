@@ -4,6 +4,12 @@
       <h2 style="margin-bottom: 0.75rem">
         {{ $t("bill.title") }}
       </h2>
+      <div class="alert alert-danger mt-3 py-2" role="alert" v-if="errored">
+        {{ error }}
+      </div>
+      <div class="alert alert-danger mt-3 py-2" role="alert" v-if="messaged">
+        {{ message }}
+      </div>
       <div
         v-for="(control, index) in controls"
         :key="index"
@@ -59,6 +65,8 @@ export default {
       loading: true,
       errored: false,
       error: "Error",
+      messaged: false,
+      message: "",
     };
   },
   mounted() {
@@ -111,10 +119,6 @@ export default {
         if (error.response.data.error) {
           this.errored = true;
           this.error = error.response.data.error;
-        }
-        if (error.response.data.data) {
-          this.validated = true;
-          this.validation = error.response.data.data;
         }
         if (error.response.data.message) {
           this.messaged = true;

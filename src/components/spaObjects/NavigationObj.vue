@@ -80,6 +80,10 @@
         >
         <span class="text">{{ $t("navigation.paymentSettings") }}</span>
       </router-link>
+      <router-link to="/Communication" class="button">
+        <span class="material-icons" style="padding-left: 1rem">mail</span>
+        <span class="text">{{ $t("navigation.communication") }}</span>
+      </router-link>
     </div>
 
     <div v-if="userRole === 'teacher'" class="menu">
@@ -110,6 +114,11 @@
         <span class="material-icons" style="padding-left: 1rem">today</span>
         <span class="text">{{ $t("navigation.groups.attendance") }}</span>
       </router-link>
+
+      <router-link to="/communication" class="button">
+        <span class="material-icons" style="padding-left: 1rem">mail</span>
+        <span class="text">{{ $t("navigation.communication") }}</span>
+      </router-link>
     </div>
 
     <div v-if="userRole === 'parent'" class="menu">
@@ -125,6 +134,11 @@
           >phone_iphone</span
         >
         <span class="text">{{ $t("navigation.mobileApp") }}</span>
+      </router-link>
+
+      <router-link :to="`/feedbackSend/${userRoleId}`" class="button">
+        <span class="material-icons" style="padding-left: 1rem">comment</span>
+        <span class="text">{{ $t("navigation.feedback") }}</span>
       </router-link>
     </div>
 
