@@ -19,11 +19,11 @@
         v-for="(payment, index) in payments"
         :key="index"
       >
-        <label class="label-light">{{
+        <label v-if="payment.monthly_payment != 0" class="label-light">{{
           $t("months." + payment.month_id)
         }}</label>
 
-        <div class="output-group">
+        <div v-if="payment.monthly_payment != 0" class="output-group">
           <div class="output mb-2">
             {{ payment.monthly_payment }}
           </div>
@@ -51,7 +51,7 @@
           <button
             v-if="payment.payment_status === 'unpaid' && userRole === 'admin'"
             class="btn btn-danger mb-2 ml-2 px-2.5"
-            style="border-radius: 5px; width: 6rem"
+            style="border-radius: 5px; width: 8rem"
             type="button"
             @click="this.redirectToBill(payment.id_payment)"
           >
@@ -61,7 +61,7 @@
           <button
             v-if="payment.payment_status === 'paid' && userRole === 'admin'"
             class="btn btn-secondary mb-2 ml-2 px-2.5"
-            style="border-radius: 5px; width: 6rem"
+            style="border-radius: 5px; width: 8rem"
             type="button"
             @click="this.redirectToBill(payment.id_payment)"
           >

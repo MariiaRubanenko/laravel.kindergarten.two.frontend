@@ -123,7 +123,7 @@ export default {
   data() {
     return {
       familyAccountId: this.$route.params.familyId,
-      errored: true,
+      errored: false,
       error: "Error",
       messaged: false,
       message: "",

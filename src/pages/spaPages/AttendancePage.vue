@@ -11,7 +11,7 @@
 <script>
 import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
 import HeaderObj from "@/components/spaObjects/HeaderObj.vue";
-import AttendanceObj from "@/components/spaObjects/AttendanceObj.vue";
+import AttendanceObj from "@/components/spaObjects/groupAtributes/AttendanceObj.vue";
 
 export default {
   components: {

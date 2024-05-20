@@ -453,7 +453,23 @@
     "deleteError": "Error during deleting а child from family!",
     "dataLoadingError": "Error during loading children!",
     "dataNo": "There are no children in the family!",
-    "addNewChild": "Add new child"
+    "addNewChild": "Add new child",
+    "trustedPersons": "Trusted Persons",
+    "parentProfile": "View parent"
+  },
+
+  "parentProfile": {
+    "title": "Parent information",
+    "name": {
+      "label": "Name"
+    },
+    "email": {
+      "label": "Email"
+    },
+    "phone": {
+      "label": "Phone"
+    },
+    "dataLoadingError": "Error during loading psrent information!"
   },
 
   "trustedPersons": {

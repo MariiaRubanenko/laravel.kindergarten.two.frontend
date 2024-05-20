@@ -18,8 +18,8 @@
 <script>
 import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
 import HeaderObj from "@/components/spaObjects/HeaderObj.vue";
-import StaffsOfGroupObj from "@/components/spaObjects/StaffsOfGroupObj.vue";
-import StaffsWithoutGroupObj from "@/components/spaObjects/StaffWithoutGroupObj.vue";
+import StaffsOfGroupObj from "@/components/spaObjects/groupAtributes/StaffsOfGroupObj.vue";
+import StaffsWithoutGroupObj from "@/components/spaObjects/groupAtributes/StaffWithoutGroupObj.vue";
 
 export default {
   components: {

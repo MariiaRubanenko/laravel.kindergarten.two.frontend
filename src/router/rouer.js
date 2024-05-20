@@ -12,21 +12,22 @@ import SettingsPage from "@/pages/spaPages/SettingsPage.vue";
 import CreateUserPage from "@/pages/spaPages/admin/CreateUserPage.vue";
 import CreateChildPage from "@/pages/spaPages/admin/CreateChildPage.vue";
 import FamiliesPage from "@/pages/spaPages/admin/FamiliesPage.vue";
-import FamilyProfilePage from "@/pages/spaPages/FamilyProfilePage.vue";
+import FamilyPage from "@/pages/spaPages/admin/FamilyPage.vue";
 import GroupChildrenPage from "@/pages/spaPages/admin/GroupChildrenPage.vue";
 import GroupsPage from "@/pages/spaPages/admin/GroupsPage.vue";
 import GroupStaffPage from "@/pages/spaPages/admin/GroupStaffPage.vue";
 import StaffPage from "@/pages/spaPages/admin/StaffPage.vue";
 import PaymentSettingsPage from "@/pages/spaPages/admin/PaymentSettingsPage.vue";
 
-import CommunicationPage from "@/pages/spaPages/CommunicationPage.vue";
-
 import AttendancePage from "@/pages/spaPages/AttendancePage.vue";
-import ChildProfilePage from "@/pages/spaPages/ChildProfilePage.vue";
-import StaffProfilePage from "@/pages/spaPages/StaffProfilePage.vue";
 import TimetablePage from "@/pages/spaPages/TimetablePage.vue";
-import TrustedPersonsPage from "@/pages/spaPages/TrustedPersonsPage.vue";
-import UserProfilePage from "@/pages/spaPages/UserProfilePage.vue";
+
+import ChildProfilePage from "@/pages/spaPages/profiles/ChildProfilePage.vue";
+import StaffProfilePage from "@/pages/spaPages/profiles/StaffProfilePage.vue";
+import FamilyAccountProfilePage from "@/pages/spaPages/profiles/FamilyAccountProfilePage.vue";
+import TrustedPersonsPage from "@/pages/spaPages/profiles/TrustedPersonsPage.vue";
+import UserProfilePage from "@/pages/spaPages/profiles/UserProfilePage.vue";
+import BillPage from "@/pages/spaPages/profiles/BillPage.vue";
 
 import ChildrenOfGroupProfilePage from "@/pages/spaPages/teacher/ChildrenOfGroupProfilePage.vue";
 import StaffOfGroupProfilePage from "@/pages/spaPages/teacher/StaffOfGroupProfilePage.vue";
@@ -34,8 +35,7 @@ import StaffOfGroupProfilePage from "@/pages/spaPages/teacher/StaffOfGroupProfil
 import AppDownloadPage from "@/pages/spaPages/parent/AppDownloadPage.vue";
 import PaymentPage from "@/pages/spaPages/parent/PaymentPage.vue";
 import FeedbackSendPage from "@/pages/spaPages/parent/FeedbackSendPage.vue";
-
-import BillPage from "@/pages/spaPages/BillPage.vue";
+import CommunicationPage from "@/pages/spaPages/parent/CommunicationPage.vue";
 
 import { createRouter, createWebHistory } from "vue-router";
 
@@ -92,7 +92,7 @@ const routes = [
   {
     path: "/familyProfile/:familyId",
     name: "Family Profile",
-    component: FamilyProfilePage,
+    component: FamilyPage,
     meta: { requiresAuth: true, roles: ["admin"] },
   },
   {
@@ -148,10 +148,10 @@ const routes = [
     meta: { requiresAuth: true, roles: ["admin", "teacher"] },
   },
   {
-    path: "/familyProfile/:familyId",
-    name: "Family Profile",
-    component: FamilyProfilePage,
-    meta: { requiresAuth: true, roles: ["admin", "teacher"] },
+    path: "/familyAccountProfile/:familyId",
+    name: "Family Account Profile",
+    component: FamilyAccountProfilePage,
+    meta: { requiresAuth: true, roles: ["admin"] },
   },
   {
     path: "/childProfile/:childId",
@@ -240,31 +240,3 @@ router.beforeEach((to, from, next) => {
 });
 
 export default router;
-
-/* router.beforeEach((to, from, next) => {
-  const isAuthenticated = localStorage.getItem("userAuthenticated"); // Проверка аутентификации пользователя
-  const userRole = localStorage.getItem("userRole"); // Получение роли пользователя из локального хранилища
-
-  // Если маршрут требует аутентификации
-  if (to.meta.requiresAuth) {
-    // Если пользователь не аутентифицирован, перенаправляем на страницу входа
-    if (!isAuthenticated) {
-      next("/login");
-    } else {
-      // Если у маршрута есть метаданные и роли пользователя
-      if (to.meta.roles && to.meta.roles.includes(userRole)) {
-        next(); // Продолжаем навигацию
-      } else {
-        next("/access-denied"); // Перенаправляем на страницу доступа запрещен
-      }
-    }
-  } else {
-    // Если пользователь аутентифицирован и переходит на страницу без аутентификации,
-    // вызываем метод logout
-    if (isAuthenticated) {
-      logout(); // Вызываем метод logout
-    }
-    next(); // Продолжаем навигацию для открытых маршрутов
-  }
-});
- */

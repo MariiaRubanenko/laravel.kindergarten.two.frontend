@@ -12,10 +12,10 @@
 <script>
 import NavbarObj from "@/components/visitCardObjects/NavbarObj.vue";
 import HomeHeaderObj from "@/components/visitCardObjects/HomeHeaderObj.vue";
-import AboutObj from "@/components/visitCardObjects/AboutObj.vue";
-import ActivitiesObj from "@/components/visitCardObjects/ActivitiesObj.vue";
-import ClassesObj from "@/components/visitCardObjects/ClassesObj.vue";
-import TeachersObj from "@/components/visitCardObjects/TeachersObj.vue";
+import AboutObj from "@/components/visitCardObjects/home/AboutObj.vue";
+import ActivitiesObj from "@/components/visitCardObjects/home/ActivitiesObj.vue";
+import ClassesObj from "@/components/visitCardObjects/home/ClassesObj.vue";
+import TeachersObj from "@/components/visitCardObjects/home/TeachersObj.vue";
 import FooterObj from "@/components/visitCardObjects/FooterObj.vue";
 import BackToTopObj from "@/components/visitCardObjects/BackToTopObj.vue";
 

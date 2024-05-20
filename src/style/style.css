@@ -5434,13 +5434,13 @@ a.badge-dark.focus {
 }
 
 .alert-primary {
-  color: #0c5460;
-  background-color: #d1ecf1;
-  border-color: #bee5eb;
+  color: #32760a;
+  background-color: #b1e07a;
+  border-color: #bde58e;
 }
 
 .alert-primary hr {
-  border-top-color: #abdde5;
+  border-top-color: #a0da5c;
 }
 
 .alert-primary .alert-link {

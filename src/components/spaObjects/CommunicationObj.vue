@@ -68,6 +68,10 @@ import { getCookies } from "@/api/request";
 import axios from "axios";
 import router from "@/router/rouer";
 
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
+import { ref } from "vue";
+
 export default {
   components: {
     CustomSelect,
@@ -75,6 +79,8 @@ export default {
   },
   setup() {
     const mail = reactive({ email: "", text_email: "" });
+
+    const updating = ref(false);
 
     const rules = computed(() => {
       return {
@@ -88,7 +94,7 @@ export default {
 
     const v$ = useVuelidate(rules, mail);
 
-    return { mail, v$ };
+    return { mail, v$, updating };
   },
   data() {
     return {
@@ -164,7 +170,15 @@ export default {
             },
           });
           console.log("Email sent successfully:", response.data);
-          router.go();
+          toast.success(response.data.message, { autoClose: 6000 });
+          this.updating = true; // Устанавливаем флаг обновления
+          // Очищаем поля паролей
+          this.mail.email = "";
+          this.mail.text_email = "";
+          setTimeout(() => {
+            this.updating = true;
+            router.go();
+          }, 6000);
         } catch (error) {
           console.error("Error sending email:", error);
           console.error("Error sending email:", error);

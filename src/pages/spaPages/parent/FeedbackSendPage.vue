@@ -11,7 +11,7 @@
 <script>
 import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
 import HeaderObj from "@/components/spaObjects/HeaderObj.vue";
-import FeedbackSendObj from "@/components/spaObjects/payment/FeedbackSendObj.vue";
+import FeedbackSendObj from "@/components/spaObjects/FeedbackSendObj.vue";
 
 export default {
   components: {

@@ -44,6 +44,10 @@ import router from "@/router/rouer.js";
 
 import TextArea from "@/components/Elements/TextArea.vue";
 
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
+import { ref } from "vue";
+
 import { getCookies } from "@/api/request";
 import { useVuelidate } from "@vuelidate/core";
 import { required, minLength, maxLength } from "@vuelidate/validators";
@@ -55,6 +59,8 @@ export default {
   },
   setup() {
     const comment = reactive({ text: "" });
+
+    const updating = ref(false);
 
     const rules = computed(() => {
       return {
@@ -68,7 +74,7 @@ export default {
 
     const v$ = useVuelidate(rules, comment);
 
-    return { comment, v$ };
+    return { comment, v$, updating };
   },
   data() {
     return {
@@ -97,7 +103,13 @@ export default {
             },
           });
           console.log("Comment sent successfully:", response.data);
-          router.go();
+          toast.success(response.data.message, { autoClose: 6000 });
+          this.updating = true;
+          this.comment.text = "";
+          setTimeout(() => {
+            this.updating = false;
+            router.go();
+          }, 6000);
         } catch (error) {
           console.error("Error sending comment:", error);
           console.error("Error sending comment:", error);

@@ -5,6 +5,12 @@
         <h2 style="margin-bottom: 0.75rem">
           {{ $t("settings.passwordChanging.title") }}
         </h2>
+        <div class="alert alert-danger py-2 mb-3" role="alert" v-if="messaged">
+          {{ message }}
+        </div>
+        <div class="alert alert-danger py-2 mb-3" role="alert" v-if="errored">
+          {{ error }}
+        </div>
         <Textbox
           v-model="passwords.passwordOld"
           :type="'password'"
@@ -14,7 +20,7 @@
           :errorMessage="
             v$.passwordOld.$error
               ? v$.passwordOld.$errors[0].$message
-              : validated
+              : validation.passwordOld
               ? validation.passwordOld[0]
               : ''
           "
@@ -28,7 +34,7 @@
           :errorMessage="
             v$.passwordNew.$error
               ? v$.passwordNew.$errors[0].$message
-              : validated
+              : validation.passwordNew
               ? validation.passwordNew[0]
               : ''
           "
@@ -44,7 +50,7 @@
           :errorMessage="
             v$.passwordConfirm.$error
               ? v$.passwordConfirm.$errors[0].$message
-              : validated
+              : validation.passwordConfirm
               ? validation.passwordConfirm[0]
               : ''
           "
@@ -58,9 +64,6 @@
             {{ $t("spa.buttons.change") }}
           </button>
         </div>
-        <div class="alert alert-danger py-2" role="alert" v-if="errored">
-          {{ error }}
-        </div>
       </form>
     </div>
   </div>
@@ -72,6 +75,10 @@ import axios from "axios";
 import router from "@/router/rouer.js";
 
 import { getCookies } from "@/api/request";
+
+import { toast } from "vue3-toastify";
+import "vue3-toastify/dist/index.css";
+import { ref } from "vue";
 
 import { useVuelidate } from "@vuelidate/core";
 import { required, minLength, maxLength } from "@vuelidate/validators";
@@ -87,6 +94,8 @@ export default {
       passwordNew: "",
       passwordConfirm: "",
     });
+
+    const updating = ref(false);
 
     const rules = computed(() => {
       return {
@@ -110,13 +119,14 @@ export default {
 
     const v$ = useVuelidate(rules, passwords);
 
-    return { passwords, v$ };
+    return { passwords, v$, updating };
   },
   data() {
     return {
       errored: false,
       error: "Error",
-      validated: false,
+      messaged: false,
+      message: "",
       validation: {},
     };
   },
@@ -140,14 +150,28 @@ export default {
             }
           );
           console.log("Password changed successfully:", response.data);
-          router.go();
+          toast.success(response.data.message, { autoClose: 6000 });
+          this.updating = true; // Устанавливаем флаг обновления
+          // Очищаем поля паролей
+          this.passwords.passwordOld = "";
+          this.passwords.passwordNew = "";
+          this.passwords.passwordConfirm = "";
+          setTimeout(() => {
+            this.updating = true;
+            router.go();
+          }, 6000);
         } catch (error) {
           console.error("Error changing password:", error);
-          this.errored = true;
-          this.error = error.response.data.error;
-          if (error.response.data.data) {
-            this.validated = true;
-            this.validation = error.response.data.data;
+          if (error.response.data.error) {
+            this.errored = true;
+            this.error = error.response.data.error;
+          }
+          if (error.response.data.errors) {
+            this.validation = error.response.data.errors;
+          }
+          if (error.response.data.message) {
+            this.messaged = true;
+            this.message = error.response.data.message;
           }
         }
       }

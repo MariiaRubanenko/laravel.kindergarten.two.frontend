@@ -39,7 +39,7 @@
 
 <script>
 import axios from "axios";
-import router from "@/router/rouer";
+//import router from "@/router/rouer";
 
 import { getCookies } from "@/api/request";
 
@@ -130,28 +130,15 @@ export default {
     },
   },
   created() {
-    // Check if URL contains success or cancel parameters
-    const params = new URLSearchParams(window.location.search);
-    console.log(params);
-    const success = params.get("success");
-    const cancel = params.get("cancel");
-
-    // Handle success scenario
-    if (success) {
-      // Perform any necessary actions upon successful payment
-      // For example, fetch the updated payment details
-      //this.fetchPayment();
-      // Optionally, display a success message to the user
-      // You can also navigate to a success page if needed
-      router.push({ path: `/payment/${this.userRoleId}` });
+    const sessionId = this.$route.query.session_id;
+    if (sessionId) {
+      const userAuthenticated = true;
+      localStorage.setItem("userAuthenticated", userAuthenticated);
+      localStorage.setItem("userRole", parent);
     }
-
-    // Handle cancel scenario
-    if (cancel) {
-      // Display a message to the user indicating the payment was canceled
-      // Optionally, navigate to a cancel page or perform any other actions
-      router.push({ path: `/payment/${this.userRoleId}` });
-    }
+    const userAuthenticated = true;
+    localStorage.setItem("userAuthenticated", userAuthenticated);
+    localStorage.setItem("userRole", parent);
   },
 };
 </script>

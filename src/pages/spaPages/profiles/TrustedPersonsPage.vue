@@ -1,20 +1,20 @@
 <template>
   <div class="spa">
     <NavigationObj />
-    <main><HeaderObj /> <StaffProfileObj /></main>
+    <main><HeaderObj /> <TrustedPersonsObj /></main>
   </div>
 </template>
 
 <script>
 import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
 import HeaderObj from "@/components/spaObjects/HeaderObj.vue";
-import StaffProfileObj from "@/components/spaObjects/StaffProfileObj.vue";
+import TrustedPersonsObj from "@/components/spaObjects/familyAtributes/TrustedPersonsObj.vue";
 
 export default {
   components: {
     NavigationObj,
     HeaderObj,
-    StaffProfileObj,
+    TrustedPersonsObj,
   },
   data() {},
 };

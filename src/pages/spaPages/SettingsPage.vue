@@ -12,8 +12,8 @@
 <script>
 import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
 import HeaderObj from "@/components/spaObjects/HeaderObj.vue";
-import SwitchLanguageObj from "@/components/spaObjects/SwitchLanguageObj.vue";
-import PasswordChangingObj from "@/components/spaObjects/PasswordChangingObj.vue";
+import SwitchLanguageObj from "@/components/spaObjects/settings/SwitchLanguageObj.vue";
+import PasswordChangingObj from "@/components/spaObjects/settings/PasswordChangingObj.vue";
 
 export default {
   components: {

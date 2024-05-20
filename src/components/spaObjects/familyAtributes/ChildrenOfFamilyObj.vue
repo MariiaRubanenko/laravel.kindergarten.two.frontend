@@ -1,16 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-lg-6 mb-5">
-      <div class="text-right">
-        <router-link
-          :to="{ path: `/createChild/${familyId}`, name: 'Create Child' }"
-          class="btn btn-primary py-2 px-4"
-          style="border-radius: 10px"
-        >
-          {{ $t("familyChildren.addNewChild") }}
-        </router-link>
-      </div>
-
+    <div class="col-lg-6 mb-2">
       <h2 style="margin-bottom: 0.75rem">
         {{ $t("familyChildren.title") }}
       </h2>

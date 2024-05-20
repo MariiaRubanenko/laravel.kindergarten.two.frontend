@@ -439,7 +439,23 @@
     "deleteError": "Помилка під час видалення дитини з сім'ї!",
     "dataLoadingError": "Помилка під час завантаження дітей!",
     "dataNo": "Немає дітей у сім'ї!",
-    "addNewChild": "Додати нову дитину"
+    "addNewChild": "Додати нову дитину",
+    "trustedPersons": "Trusted Persons",
+    "parentProfile": "View parent"
+  },
+
+  "parentProfile": {
+    "title": "Профіль батька",
+    "name": {
+      "label": "Ім'я"
+    },
+    "email": {
+      "label": "Пошта"
+    },
+    "phone": {
+      "label": "Телефон"
+    },
+    "dataLoadingError": "Помилка під час завантаження інформації про батька!"
   },
   "trustedPersons": {
     "title": "Довірені особи",

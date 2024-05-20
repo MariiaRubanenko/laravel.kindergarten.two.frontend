@@ -8,7 +8,7 @@
 <script>
 import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
 import HeaderObj from "@/components/spaObjects/HeaderObj.vue";
-import FamiliesObj from "@/components/spaObjects/FamiliesObj.vue";
+import FamiliesObj from "@/components/spaObjects/administration/FamiliesObj.vue";
 
 export default {
   components: {
