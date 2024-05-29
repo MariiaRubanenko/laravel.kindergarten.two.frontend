@@ -621,6 +621,16 @@
     }
   },
 
+  "appDownload": {
+    "title": "Mobile App",
+    "downloadApk": "Download APK",
+    "app": {
+      "name": "Happy Times",
+      "date": "Date: 05.06.2024",
+      "version": "Version: 1.0.0"
+    }
+  },
+
   "communication": {
     "title": "Communication with parents",
     "email": {

@@ -37,7 +37,6 @@
           >
             {{ $t("payments.buttons.pay") }}
           </button>
-
           <button
             v-if="payment.payment_status === 'paid' && userRole === 'parent'"
             class="btn btn-secondary mb-2 ml-2 px-2.5"
