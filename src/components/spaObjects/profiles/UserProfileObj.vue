@@ -82,7 +82,7 @@
               :errorMessage="
                 v$.newPhone.$error
                   ? v$.newPhone.$errors[0].$message
-                  : validated.phone_number
+                  : validation.phone_number
                   ? validation.phone_number[0]
                   : ''
               "
@@ -160,7 +160,6 @@ export default {
       error: "Error",
       messaged: false,
       message: "",
-      validated: false,
       validation: {},
       loading: true,
       userRole: localStorage.getItem("userRole"),
@@ -259,7 +258,6 @@ export default {
             this.error = error.response.data.error;
           }
           if (error.response.data.data) {
-            this.validated = true;
             this.validation = error.response.data.data;
           }
           if (error.response.data.message) {

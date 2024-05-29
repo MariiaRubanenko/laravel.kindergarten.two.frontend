@@ -16,17 +16,17 @@
     <div
       v-if="userRole === 'admin'"
       class="dropdown"
-      :class="{ 'active-element': isActiveRoute }"
+      :class="{ 'active-element': isActiveGroupsRoute }"
     >
       <router-link to="/groups" class="dropbtn">
         <span class="material-icons" style="padding-right: 1rem">groups</span>
         <span class="text">{{ $t("navigation.groups.title") }}</span>
         <span class="material-icons" style="padding-left: 1rem">
-          {{ isDropdownOpen ? "expand_less" : "expand_more" }}
+          {{ isDropdownGroupsOpen ? "expand_less" : "expand_more" }}
         </span>
       </router-link>
 
-      <div class="dropdown-content" v-show="isDropdownOpen">
+      <div class="dropdown-content" v-show="isDropdownGroupsOpen">
         <router-link :to="`/groupChildren/${groupId}`" class="button">
           <span class="text" style="padding-left: 2rem">{{
             $t("navigation.groups.children")
@@ -55,31 +55,73 @@
 
     <div
       v-if="userRole === 'admin'"
+      class="dropdown"
+      :class="{
+        'active-element': isActiveFamiliesRoute,
+        'shift-down': isDropdownGroupsOpen,
+      }"
+    >
+      <router-link to="/families" class="dropbtn">
+        <span class="material-icons" style="padding-right: 1rem"
+          >family_restroom</span
+        >
+        <span class="text">{{ $t("navigation.families.title") }}</span>
+        <span class="material-icons" style="padding-left: 1rem">
+          {{ isDropdownFamiliesOpen ? "expand_less" : "expand_more" }}
+        </span>
+      </router-link>
+
+      <div class="dropdown-content" v-show="isDropdownFamiliesOpen">
+        <router-link :to="`/childrenOfFamily/${familyId}`" class="button">
+          <span class="text" style="padding-left: 2rem">{{
+            $t("navigation.families.Children")
+          }}</span>
+        </router-link>
+
+        <router-link :to="`/trustedPersons/${familyId}`" class="button">
+          <span class="text" style="padding-left: 2rem">{{
+            $t("navigation.families.trustedPersons")
+          }}</span>
+        </router-link>
+
+        <router-link :to="`/payment/${familyId}`" class="button">
+          <span class="text" style="padding-left: 2rem">{{
+            $t("navigation.families.familyPayments")
+          }}</span>
+        </router-link>
+
+        <router-link :to="`/createChild/${familyId}`" class="button">
+          <span class="text" style="padding-left: 2rem">{{
+            $t("navigation.families.createChild")
+          }}</span>
+        </router-link>
+      </div>
+    </div>
+
+    <div
+      v-if="userRole === 'admin'"
       class="menu"
-      :class="{ 'shift-down': isDropdownOpen }"
+      :class="{ 'shift-down': isDropdownFamiliesOpen }"
     >
       <router-link to="/staff" class="button">
         <span class="material-icons" style="padding-left: 1rem">person</span>
         <span class="text">{{ $t("navigation.staff") }}</span>
       </router-link>
-      <router-link to="/families" class="button">
-        <span class="material-icons" style="padding-left: 1rem"
-          >family_restroom</span
-        >
-        <span class="text">{{ $t("navigation.families") }}</span>
-      </router-link>
+
       <router-link to="/createUser" class="button">
         <span class="material-icons" style="padding-left: 1rem"
           >person_add</span
         >
         <span class="text">{{ $t("navigation.createUser") }}</span>
       </router-link>
+
       <router-link to="/paymentSettings" class="button">
         <span class="material-icons" style="padding-left: 1rem"
           >credit_card</span
         >
         <span class="text">{{ $t("navigation.paymentSettings") }}</span>
       </router-link>
+
       <router-link to="/Communication" class="button">
         <span class="material-icons" style="padding-left: 1rem">mail</span>
         <span class="text">{{ $t("navigation.communication") }}</span>
@@ -165,9 +207,14 @@ import { logout } from "@/api/request";
 
 const is_expanded = ref(localStorage.getItem("is_expanded") === "true");
 const route = useRoute();
-const isDropdownOpen = ref(false);
-const isActiveRoute = ref(false);
+const isDropdownGroupsOpen = ref(false);
+const isActiveGroupsRoute = ref(false);
+
+const isDropdownFamiliesOpen = ref(false);
+const isActiveFamiliesRoute = ref(false);
+
 const groupId = route.params.groupId;
+const familyId = route.params.familyId;
 const userRole = localStorage.getItem("userRole");
 const groupIdForTeacher = localStorage.getItem("groupId");
 const userRoleId = localStorage.getItem("userRoleId");
@@ -185,16 +232,32 @@ watchEffect(() => {
     `/attendance/${groupId}`,
   ];
 
+  const dropdowndFamiliesRoutes = [
+    `/childrenOfFamily/${familyId}`,
+    `/createChild/${familyId}`,
+    `/trustedPersons/${familyId}`,
+    `/payment/${familyId}`,
+  ];
+
   if (is_expanded.value) {
     if (dropdownRoutes.includes(route.path)) {
-      isDropdownOpen.value = true;
-      isActiveRoute.value = true;
+      isDropdownGroupsOpen.value = true;
+      isActiveGroupsRoute.value = true;
     } else {
-      isDropdownOpen.value = false;
-      isActiveRoute.value = false;
+      isDropdownGroupsOpen.value = false;
+      isActiveGroupsRoute.value = false;
+    }
+
+    if (dropdowndFamiliesRoutes.includes(route.path)) {
+      isDropdownFamiliesOpen.value = true;
+      isActiveFamiliesRoute.value = true;
+    } else {
+      isDropdownFamiliesOpen.value = false;
+      isActiveFamiliesRoute.value = false;
     }
   } else {
-    isDropdownOpen.value = false;
+    isDropdownFamiliesOpen.value = false;
+    isDropdownGroupsOpen.value = false;
   }
 });
 </script>
@@ -269,6 +332,10 @@ aside {
   }
 
   .dropdown {
+    &.shift-down {
+      margin-top: 10.5rem;
+    }
+
     margin: 0 -1rem;
     &.active-element {
       border-right: 5px solid var(--light);
@@ -411,7 +478,13 @@ aside {
     }
   }
 
-  &.isDropdownOpen {
+  &.isDropdownGroupsOpen {
+    .menu {
+      margin-top: 10rem;
+    }
+  }
+
+  &.isDropdownFamiliesOpen {
     .menu {
       margin-top: 10rem;
     }

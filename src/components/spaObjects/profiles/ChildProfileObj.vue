@@ -90,8 +90,8 @@ export default {
         this.loading = false;
       }
     },
-    redirectToTrustedPersons(familyAccountId) {
-      router.push({ path: `/TrustedPersons/${familyAccountId}` });
+    redirectToTrustedPersons(familyId) {
+      router.push({ path: `/trustedPersons/${familyId}` });
     },
     getImageSource() {
       if (this.loading || !this.child.image_data || this.errored) {

@@ -130,7 +130,7 @@ export default {
       this.showModal = false;
     },
     redirectToFamily(familyId) {
-      router.push({ path: `/familyProfile/${familyId}` });
+      router.push({ path: `/childrenOfFamily/${familyId}` });
     },
     closeModal() {
       this.showModal = false;

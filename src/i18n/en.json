@@ -283,8 +283,15 @@
       "timetable": "Timetable",
       "attendance": "Attendance"
     },
+    "families": {
+      "title": "Families",
+      "familyAccountProfile": "Parent profile",
+      "Children": "Children",
+      "createChild": "Add Child",
+      "trustedPersons": "Trusted Persons",
+      "familyPayments": "Payments"
+    },
     "staff": "Staff",
-    "families": "Families",
     "createUser": "Create User",
     "paymentSettings": "Payment Settings",
     "mobileApp": "Mobile App",

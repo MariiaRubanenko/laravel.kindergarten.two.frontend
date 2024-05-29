@@ -1,6 +1,6 @@
 <template>
-  <div class="container-fluid py-5">
-    <div class="container">
+  <div class="container-fluid">
+    <div class="container col-lg-6">
       <h2 style="margin-bottom: 0.75rem">
         {{ $t("trustedPersons.title") }}
       </h2>
@@ -19,14 +19,14 @@
         :key="index"
         class="row align-items-center d-flex justify-content-center trusted-person-container"
       >
-        <div class="col-lg-3">
+        <div class="col-lg-4">
           <img
             class="img-fluid-center side-rounded-fullcircle mt-2 mb-4 mb-lg-2 mt-lg-2"
             :src="getImageSource(trustedPerson)"
             alt=""
           />
         </div>
-        <div class="col-lg-9 mt-lg-4">
+        <div class="col-lg-8 mt-lg-4">
           <form @submit.prevent="submitForm" novalidate="novalidate">
             <div
               v-for="(control, index) in controls"
@@ -69,7 +69,7 @@ export default {
       errored: false,
       error: "Error",
       loading: true,
-      familyAccountId: this.$route.params.familyAccountId,
+      familyAccountId: this.$route.params.familyId,
     };
   },
   mounted() {

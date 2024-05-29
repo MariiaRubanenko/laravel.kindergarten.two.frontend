@@ -129,16 +129,5 @@ export default {
       }
     },
   },
-  created() {
-    const sessionId = this.$route.query.session_id;
-    if (sessionId) {
-      const userAuthenticated = true;
-      localStorage.setItem("userAuthenticated", userAuthenticated);
-      localStorage.setItem("userRole", parent);
-    }
-    const userAuthenticated = true;
-    localStorage.setItem("userAuthenticated", userAuthenticated);
-    localStorage.setItem("userRole", parent);
-  },
 };
 </script>

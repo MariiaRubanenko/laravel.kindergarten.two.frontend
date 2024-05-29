@@ -282,7 +282,14 @@
       "attendance": "Відвідуваність"
     },
     "staff": "Працівники",
-    "families": "Сім'ї",
+    "families": {
+      "title": "Сім'ї",
+      "familyAccountProfile": "Профіль батька",
+      "Children": "Діти",
+      "createChild": "Додати дитину",
+      "trustedPersons": "Довірені особи",
+      "familyPayments": "Платежі"
+    },
     "createUser": "Створити Користувача",
     "paymentSettings": "Налаштування Оплати",
     "communication": "Комунікація",

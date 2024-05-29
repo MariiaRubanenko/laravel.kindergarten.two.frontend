@@ -1,21 +1,23 @@
 <template>
-  <div class="container-fluid py-5">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-lg-5">
+  <div class="container-fluid">
+    <div class="container col-lg-6 mb-5">
+      <h2 style="margin-bottom: 0.75rem">
+        {{ $t("parentProfile.title") }}
+      </h2>
+      <div class="alert alert-danger py-2" role="alert" v-if="errored">
+        {{ error }}
+      </div>
+      <div
+        class="row align-items-center d-flex justify-content-center trusted-person-container"
+      >
+        <div class="col-lg-4">
           <img
-            class="img-fluid-center rounded-fullcircle mb-5 mb-lg-5"
+            class="img-fluid-center side-rounded-fullcircle mt-2 mb-4 mb-lg-2 mt-lg-2"
             :src="getImageSource()"
             alt=""
           />
         </div>
-        <div class="col-lg-7">
-          <h2 style="margin-bottom: 0.75rem">
-            {{ $t("parentProfile.title") }}
-          </h2>
-          <div class="alert alert-danger mb-3 py-2" role="alert" v-if="errored">
-            {{ error }}
-          </div>
+        <div class="col-lg-8 mt-lg-4">
           <div
             v-for="(control, index) in controls"
             :key="index"
@@ -31,6 +33,7 @@
           </div>
         </div>
       </div>
+      <InfoLoader :loading="loading" />
     </div>
   </div>
 </template>

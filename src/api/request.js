@@ -50,12 +50,6 @@ export async function logout() {
     console.log("Logout successfully:", response);
   } catch (error) {
     console.error("Error logout:", error);
-    /*  this.errored = true;
-    this.error = error.response.data.error;
-    if (error.response.data.data) {
-      this.validated = true;
-      this.validation = error.response.data.data;
-    } */
   }
 }
 

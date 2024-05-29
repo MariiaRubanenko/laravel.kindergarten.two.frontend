@@ -11,7 +11,7 @@
 <script>
 import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
 import HeaderObj from "@/components/spaObjects/HeaderObj.vue";
-import FamilyPaymentsObj from "@/components/spaObjects/payment/FamilyPayments.vue";
+import FamilyPaymentsObj from "@/components/spaObjects/payment/FamilyPaymentsObj.vue";
 
 export default {
   components: {

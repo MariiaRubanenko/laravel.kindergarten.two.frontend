@@ -7,27 +7,26 @@ import Error404Page from "@/pages/errors/Error404Page.vue";
 import Error500Page from "@/pages/errors/Error500Page.vue";
 
 import LogInPage from "@/pages/visitCardPages/LogInPage.vue";
-import SettingsPage from "@/pages/spaPages/SettingsPage.vue";
+import SettingsPage from "@/pages/spaPages/common/SettingsPage.vue";
 
 import CreateUserPage from "@/pages/spaPages/admin/CreateUserPage.vue";
 import CreateChildPage from "@/pages/spaPages/admin/CreateChildPage.vue";
 import FamiliesPage from "@/pages/spaPages/admin/FamiliesPage.vue";
-import FamilyPage from "@/pages/spaPages/admin/FamilyPage.vue";
+import ChildrenOfFamily from "@/pages/spaPages/admin/ChildrenOfFamily.vue";
 import GroupChildrenPage from "@/pages/spaPages/admin/GroupChildrenPage.vue";
 import GroupsPage from "@/pages/spaPages/admin/GroupsPage.vue";
 import GroupStaffPage from "@/pages/spaPages/admin/GroupStaffPage.vue";
 import StaffPage from "@/pages/spaPages/admin/StaffPage.vue";
 import PaymentSettingsPage from "@/pages/spaPages/admin/PaymentSettingsPage.vue";
 
-import AttendancePage from "@/pages/spaPages/AttendancePage.vue";
-import TimetablePage from "@/pages/spaPages/TimetablePage.vue";
+import AttendancePage from "@/pages/spaPages/common/AttendancePage.vue";
+import TimetablePage from "@/pages/spaPages/common/TimetablePage.vue";
 
-import ChildProfilePage from "@/pages/spaPages/profiles/ChildProfilePage.vue";
-import StaffProfilePage from "@/pages/spaPages/profiles/StaffProfilePage.vue";
-import FamilyAccountProfilePage from "@/pages/spaPages/profiles/FamilyAccountProfilePage.vue";
-import TrustedPersonsPage from "@/pages/spaPages/profiles/TrustedPersonsPage.vue";
-import UserProfilePage from "@/pages/spaPages/profiles/UserProfilePage.vue";
-import BillPage from "@/pages/spaPages/profiles/BillPage.vue";
+import ChildProfilePage from "@/pages/spaPages/common/ChildProfilePage.vue";
+import StaffProfilePage from "@/pages/spaPages/common/StaffProfilePage.vue";
+import TrustedPersonsPage from "@/pages/spaPages/common/TrustedPersonsPage.vue";
+import UserProfilePage from "@/pages/spaPages/common/UserProfilePage.vue";
+import BillPage from "@/pages/spaPages/common/BillPage.vue";
 
 import ChildrenOfGroupProfilePage from "@/pages/spaPages/teacher/ChildrenOfGroupProfilePage.vue";
 import StaffOfGroupProfilePage from "@/pages/spaPages/teacher/StaffOfGroupProfilePage.vue";
@@ -45,6 +44,7 @@ const routes = [
   { path: "/location", name: "Location", component: LocationPage },
   { path: "/feedback", name: "Feedback", component: FeedbackPage },
   { path: "/gallery", name: "Gallery", component: GalleryPage },
+  { path: "/contact", name: "Contact", component: GalleryPage },
 
   { path: "/404", name: "404 Page", component: Error404Page },
   { path: "/500", name: "500 Page", component: Error500Page },
@@ -90,9 +90,9 @@ const routes = [
     meta: { requiresAuth: true, roles: ["admin"] },
   },
   {
-    path: "/familyProfile/:familyId",
-    name: "Family Profile",
-    component: FamilyPage,
+    path: "/childrenOfFamily/:familyId",
+    name: "Children Of Family",
+    component: ChildrenOfFamily,
     meta: { requiresAuth: true, roles: ["admin"] },
   },
   {
@@ -148,19 +148,13 @@ const routes = [
     meta: { requiresAuth: true, roles: ["admin", "teacher"] },
   },
   {
-    path: "/familyAccountProfile/:familyId",
-    name: "Family Account Profile",
-    component: FamilyAccountProfilePage,
-    meta: { requiresAuth: true, roles: ["admin"] },
-  },
-  {
     path: "/childProfile/:childId",
     name: "Child Profile",
     component: ChildProfilePage,
     meta: { requiresAuth: true, roles: ["admin", "teacher"] },
   },
   {
-    path: "/trustedPersons/:familyAccountId",
+    path: "/trustedPersons/:familyId",
     name: "Trusted Persons",
     component: TrustedPersonsPage,
     meta: { requiresAuth: true, roles: ["admin", "teacher"] },
@@ -195,7 +189,7 @@ const routes = [
     path: "/payment/:familyId",
     name: "Payment",
     component: PaymentPage,
-    meta: { requiresAuth: true, roles: ["parent"] },
+    meta: { requiresAuth: true, roles: ["parent", "admin"] },
   },
   {
     path: "/bill/:billId",
