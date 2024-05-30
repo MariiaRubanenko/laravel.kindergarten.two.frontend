@@ -36,18 +36,6 @@
             :class="{ active: currentPage === 'Location' }"
             >{{ $t("navBar.pages.location") }}</router-link
           >
-          <!--           <router-link
-            :to="{ name: 'Gallery' }"
-            class="nav-item nav-link"
-            :class="{ active: currentPage === 'Gallery' }"
-            >{{ $t("navBar.pages.gallery") }}</router-link
-          > -->
-          <!--           <router-link
-            :to="{ name: 'Contact' }"
-            class="nav-item nav-link"
-            :class="{ active: currentPage === 'Contact' }"
-            >{{ $t("navBar.pages.contacts") }}</router-link
-          > -->
           <router-link
             :to="{ name: 'Feedback' }"
             class="nav-item nav-link"

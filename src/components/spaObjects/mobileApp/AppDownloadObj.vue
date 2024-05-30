@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-lg-6 mb-5">
+    <div class="col-lg-7 mb-5">
       <h2 style="margin-bottom: 2rem">
         {{ $t("appDownload.title") }}
       </h2>
@@ -77,13 +77,13 @@ export default {
 
 <style scoped>
 .mobile-app-logo {
-  width: 150px;
+  width: 200px;
   height: auto;
   border-radius: 15px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 650px) {
   .d-flex.flex-wrap.align-items-start.justify-content-between {
     flex-direction: column;
     align-items: center;
@@ -91,11 +91,27 @@ export default {
 
   .btn {
     align-self: flex-end;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
   .mobile-app-logo {
     width: 100px;
+  }
+}
+
+@media (max-width: 375px) {
+  .d-flex.flex-wrap.align-items-start.justify-content-between {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .btn {
+    align-self: flex-end;
+    margin-top: 0.5rem;
+  }
+
+  .mobile-app-logo {
+    width: 70px;
   }
 }
 </style>

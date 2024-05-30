@@ -1,7 +1,6 @@
 import HomePage from "@/pages/visitCardPages/HomePage.vue";
 import LocationPage from "@/pages/visitCardPages/LocationPage.vue";
 import FeedbackPage from "@/pages/visitCardPages/FeedbackPage.vue";
-import GalleryPage from "@/pages/visitCardPages/GalleryPage.vue";
 
 import Error404Page from "@/pages/errors/Error404Page.vue";
 import Error500Page from "@/pages/errors/Error500Page.vue";
@@ -43,8 +42,6 @@ const routes = [
   { path: "/", name: "Home", component: HomePage },
   { path: "/location", name: "Location", component: LocationPage },
   { path: "/feedback", name: "Feedback", component: FeedbackPage },
-  { path: "/gallery", name: "Gallery", component: GalleryPage },
-  { path: "/contact", name: "Contact", component: GalleryPage },
 
   { path: "/404", name: "404 Page", component: Error404Page },
   { path: "/500", name: "500 Page", component: Error500Page },

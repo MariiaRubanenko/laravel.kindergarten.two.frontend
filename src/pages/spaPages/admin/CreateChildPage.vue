@@ -9,8 +9,8 @@
 </template>
 
 <script>
-import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
-import HeaderObj from "@/components/spaObjects/HeaderObj.vue";
+import NavigationObj from "@/components/spaObjects/system/NavigationObj.vue";
+import HeaderObj from "@/components/spaObjects/system/HeaderObj.vue";
 import CreateChildObj from "@/components/spaObjects/administration/CreateChildObj.vue";
 
 export default {

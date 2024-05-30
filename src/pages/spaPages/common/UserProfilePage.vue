@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
+import NavigationObj from "@/components/spaObjects/system/NavigationObj.vue";
 import UserProfileObj from "@/components/spaObjects/profiles/UserProfileObj.vue";
 
 export default {

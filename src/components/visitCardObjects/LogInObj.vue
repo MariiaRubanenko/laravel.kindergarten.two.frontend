@@ -1,5 +1,4 @@
 <template>
-  <!-- Contact Start -->
   <div class="vertical-center">
     <div class="container-fluid pt-10 mt">
       <div class="container">
@@ -157,17 +156,22 @@ export default {
           }
         } catch (error) {
           console.error("LogIn Error", error);
-          if (error.response.data.error) {
+          if (error.message) {
             this.errored = true;
-            this.error = error.response.data.error;
-          }
-          if (error.response.data.data) {
-            this.validated = true;
-            this.validation = error.response.data.data;
-          }
-          if (error.response.data.message) {
-            this.messaged = true;
-            this.message = error.response.data.message;
+            this.error = error.message;
+          } else {
+            if (error.response.data.error) {
+              this.errored = true;
+              this.error = error.response.data.error;
+            }
+            if (error.response.data.data) {
+              this.validated = true;
+              this.validation = error.response.data.data;
+            }
+            if (error.response.data.message) {
+              this.messaged = true;
+              this.message = error.response.data.message;
+            }
           }
         }
       }

@@ -35,16 +35,16 @@
                 </h3>
                 <a
                   class="text-white-footer mb-0"
-                  href="mailto:admin_1@gmail.com"
+                  href="mailto:nykyta.lisovyi@nure.ua"
                   style="font-size: 1.25em"
-                  >admin_1@gmail.com</a
+                  >nykyta.lisovyi@nure.ua</a
                 >
                 <p class="mb-0 mt-0"></p>
                 <a
                   class="text-white-footer mb-0"
-                  href="mailto:admin_2@gmail.com"
+                  href="mailto:mariia.rubanenko@nure.ua"
                   style="font-size: 1.25em"
-                  >admin_2@gmail.com</a
+                  >mariia.rubanenko@nure.ua</a
                 >
               </div>
             </div>
@@ -90,13 +90,9 @@
             <i class="fa fa-angle-right mr-2"></i
             >{{ $t("footer.pages.location") }}
           </router-link>
-          <!-- <router-link to="/gallery" class="text-white-footer mr-4 mb-2">
+          <router-link to="/feedback" class="text-white-footer mr-4 mb-2">
             <i class="fa fa-angle-right mr-2"></i
-            >{{ $t("footer.pages.gallery") }}
-          </router-link> -->
-          <router-link to="/contact" class="text-white-footer mr-4 mb-2">
-            <i class="fa fa-angle-right mr-2"></i
-            >{{ $t("footer.pages.contacts") }}
+            >{{ $t("footer.pages.feedback") }}
           </router-link>
         </div>
       </div>

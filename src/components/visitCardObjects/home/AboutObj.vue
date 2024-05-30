@@ -31,15 +31,6 @@
                 </li>
               </ul>
             </div>
-
-            <div class="container text-center mt-1">
-              <router-link
-                :to="{ name: 'Contact' }"
-                class="btn btn-primary mt-2 py-2 px-4"
-              >
-                {{ $t("about.joinNowButton") }}
-              </router-link>
-            </div>
           </div>
         </div>
       </div>
@@ -47,7 +38,3 @@
   </div>
   <!-- About End -->
 </template>
-
-<script></script>
-
-<stile></stile>

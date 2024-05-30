@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
-import HeaderObj from "@/components/spaObjects/HeaderObj.vue";
+import NavigationObj from "@/components/spaObjects/system/NavigationObj.vue";
+import HeaderObj from "@/components/spaObjects/system/HeaderObj.vue";
 import CreateGroupObj from "@/components/spaObjects/administration/CreateGroupObj.vue";
 import GroupsObj from "@/components/spaObjects/administration/GroupsObj.vue";
 

@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import NavigationObj from "@/components/spaObjects/NavigationObj.vue";
-import HeaderObj from "@/components/spaObjects/HeaderObj.vue";
+import NavigationObj from "@/components/spaObjects/system/NavigationObj.vue";
+import HeaderObj from "@/components/spaObjects/system/HeaderObj.vue";
 import SwitchLanguageObj from "@/components/spaObjects/settings/SwitchLanguageObj.vue";
 import PasswordChangingObj from "@/components/spaObjects/settings/PasswordChangingObj.vue";
 

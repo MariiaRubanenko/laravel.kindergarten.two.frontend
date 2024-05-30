@@ -48,12 +48,6 @@
                 </div>
               </div>
             </div>
-            <router-link
-              :to="{ name: 'Contact' }"
-              class="btn btn-primary px-4 mx-auto mb-4"
-            >
-              {{ $t("classes.joinNowButton") }}
-            </router-link>
           </div>
         </div>
         <div class="col-lg-4 mb-5">
@@ -95,12 +89,6 @@
                 </div>
               </div>
             </div>
-            <router-link
-              :to="{ name: 'Contact' }"
-              class="btn btn-primary px-4 mx-auto mb-4"
-            >
-              {{ $t("classes.joinNowButton") }}
-            </router-link>
           </div>
         </div>
         <div class="col-lg-4 mb-5">
@@ -142,12 +130,6 @@
                 </div>
               </div>
             </div>
-            <router-link
-              :to="{ name: 'Contact' }"
-              class="btn btn-primary px-4 mx-auto mb-4"
-            >
-              {{ $t("classes.joinNowButton") }}
-            </router-link>
           </div>
         </div>
       </div>
@@ -155,7 +137,3 @@
   </div>
   <!-- Class End -->
 </template>
-
-<script></script>
-
-<style></style>

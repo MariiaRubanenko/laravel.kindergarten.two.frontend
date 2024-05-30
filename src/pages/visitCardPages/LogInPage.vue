@@ -5,9 +5,9 @@
 </template>
 
 <script>
-import NavbarObj from "@/components/visitCardObjects/NavbarObj.vue";
+import NavbarObj from "@/components/visitCardObjects/system/NavbarObj.vue";
 import LogInObj from "@/components/visitCardObjects/LogInObj.vue";
-import BackToTopObj from "@/components/visitCardObjects/BackToTopObj.vue";
+import BackToTopObj from "@/components/visitCardObjects/system/BackToTopObj.vue";
 
 export default {
   components: {

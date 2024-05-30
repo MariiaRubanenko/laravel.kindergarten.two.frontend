@@ -25,15 +25,6 @@
           <p>{{ $t("location.info2") }}</p>
           <p>{{ $t("location.info3") }}</p>
           <p>{{ $t("location.info4") }}</p>
-
-          <div class="container text-center mt-1">
-            <router-link
-              :to="{ name: 'Contact' }"
-              class="btn btn-primary mt-2 py-2 px-4"
-            >
-              {{ $t("location.excursionButton") }}
-            </router-link>
-          </div>
         </div>
       </div>
     </div>

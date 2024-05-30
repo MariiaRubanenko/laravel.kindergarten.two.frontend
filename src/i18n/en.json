@@ -4,9 +4,7 @@
     "pages": {
       "home": "Home",
       "location": "Location",
-      "gallery": "Gallery",
-      "feedback": "Feedback",
-      "contacts": "Contacts"
+      "feedback": "Feedback"
     },
     "buttons": {
       "eng": "Eng",
@@ -43,8 +41,7 @@
       "Access to modern materials for creative and intellectual development.",
       "Psychological support for child adaptation and emotional resilience.",
       "Positive feedback from satisfied parents and high recommendation."
-    ],
-    "joinNowButton": "Join Now"
+    ]
   },
 
   "activities": {
@@ -114,28 +111,31 @@
     },
     "age": "Age of Kids",
     "seats": "Total Seats",
-    "classTime": "Class Time",
-    "joinNowButton": "Join Now"
+    "classTime": "Class Time"
   },
 
   "teachers": {
     "title": "Teachers",
     "tagline": "Meet Our Teachers",
-    "musicTeacher": {
-      "name": "Rubanenko Maria",
-      "role": "Music Teacher"
+    "Rubanenko": {
+      "name": "Maria Rubanenko",
+      "role": "Backend Developer"
     },
-    "englishTeacher": {
+    "Lisovyi": {
       "name": "Nikita Lisovyi",
-      "role": "English Teacher"
+      "role": "Frontend Developer"
     },
-    "danceTeacher": {
+    "Holoha": {
       "name": "Nikita Holoha",
-      "role": "Dance Teacher"
+      "role": "Mobile Developer"
     },
-    "artTeacher": {
-      "name": "Berezin Pavlo",
-      "role": "Art Teacher"
+    "Berezin": {
+      "name": "Pavlo Berezin",
+      "role": "Mobile Developer"
+    },
+    "Sahan": {
+      "name": "Dmitro Sahan",
+      "role": "Mobile Developer"
     }
   },
 
@@ -152,8 +152,7 @@
       "title": "Quick Links",
       "home": "Home",
       "location": "Location",
-      "gallery": "Gallery",
-      "contacts": "Contacts"
+      "feedback": "Feedback"
     }
   },
 
@@ -629,6 +628,22 @@
       "date": "Date: 05.06.2024",
       "version": "Version: 1.0.0"
     }
+  },
+
+  "appDescription": {
+    "title": "App Descripton",
+    "text": "Welcome to our kindergarten of the future with the 'Happy Times' app! Our app is designed specifically for parents to make interaction with the kindergarten easier and more efficient. Now you will always be informed about all events happening in your child's life.",
+    "list": [
+      "All the important information about your child is always at your fingertips.",
+      "Update information about allergies, illnesses, and add photos of your child.",
+      "Notify teachers about your child's absence in just one click.",
+      "Add trusted individuals to pick up your child.",
+      "Always know what's planned for the week.",
+      "Update personal information and photos.",
+      "Get to know information about your child's teachers.",
+      "Connect with other parents in groups via links.",
+      "Stay up-to-date with all news through our social networks."
+    ]
   },
 
   "communication": {

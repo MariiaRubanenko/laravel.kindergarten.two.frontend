@@ -8,11 +8,11 @@
         </p>
         <h1 class="mb-4">{{ $t("teachers.tagline") }}</h1>
       </div>
-      <div class="row">
+      <div class="row justify-content-center">
         <div
           v-for="(teacher, key) in teacherData"
           :key="key"
-          class="col-md-6 col-lg-3 text-center team mb-5"
+          class="col-md-6 col-lg-2 text-center team mb-5"
         >
           <div
             class="position-relative overflow-hidden mb-4"
@@ -57,32 +57,40 @@ export default {
     return {
       teacherData: [
         {
-          translationKey: "musicTeacher",
+          translationKey: "Rubanenko",
           image: require("@/assets/img/team-1.jpg"),
           telegram: "https://t.me/nure_press",
           facebook: "https://www.facebook.com/nureKharkiv/",
-          email: "nikita.lisovyy@gmail.com",
+          email: "info@nure.ua",
         },
         {
-          translationKey: "englishTeacher",
+          translationKey: "Lisovyi",
           image: require("@/assets/img/team-2.jpg"),
           telegram: "https://t.me/nure_press",
           facebook: "https://www.facebook.com/nureKharkiv/",
-          email: "nikita.lisovyy@gmail.com",
+          email: "info@nure.ua",
         },
         {
-          translationKey: "danceTeacher",
+          translationKey: "Holoha",
           image: require("@/assets/img/team-3.jpg"),
           telegram: "https://t.me/nure_press",
           facebook: "https://www.facebook.com/nureKharkiv/",
-          email: "nikita.lisovyy@gmail.com",
+          email: "info@nure.ua",
         },
+
         {
-          translationKey: "artTeacher",
+          translationKey: "Berezin",
           image: require("@/assets/img/team-4.jpg"),
           telegram: "https://t.me/nure_press",
           facebook: "https://www.facebook.com/nureKharkiv/",
-          email: "nikita.lisovyy@gmail.com",
+          email: "info@nure.ua",
+        },
+        {
+          translationKey: "Sahan",
+          image: require("@/assets/img/team-5.jpg"),
+          telegram: "https://t.me/nure_press",
+          facebook: "https://www.facebook.com/nureKharkiv/",
+          email: "info@nure.ua",
         },
       ],
     };
