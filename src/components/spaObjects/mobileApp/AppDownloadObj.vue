@@ -1,6 +1,6 @@
 <template>
   <div class="row justify-content-center">
-    <div class="col-lg-7 mb-5">
+    <div class="col-lg-6 mb-5">
       <h2 style="margin-bottom: 2rem">
         {{ $t("appDownload.title") }}
       </h2>
@@ -23,7 +23,7 @@
           </div>
         </div>
         <button
-          class="btn btn-primary mb-2 ml-2 px-2.5"
+          class="btn btn-primary mb-2 px-2.5"
           style="border-radius: 5px"
           type="button"
           @click="downloadApk"
@@ -83,6 +83,10 @@ export default {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
 
+.btn {
+  margin-right: 4rem;
+}
+
 @media (max-width: 650px) {
   .d-flex.flex-wrap.align-items-start.justify-content-between {
     flex-direction: column;
@@ -92,6 +96,7 @@ export default {
   .btn {
     align-self: flex-end;
     margin-top: 0.5rem;
+    margin-right: 1rem;
   }
 
   .mobile-app-logo {
@@ -108,6 +113,7 @@ export default {
   .btn {
     align-self: flex-end;
     margin-top: 0.5rem;
+    margin-right: 0rem;
   }
 
   .mobile-app-logo {

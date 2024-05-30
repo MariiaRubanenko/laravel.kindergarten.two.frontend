@@ -14,7 +14,7 @@
           :errorMessage="
             v$.date.$error
               ? v$.date.$errors[0].$message
-              : validated
+              : validation.date
               ? validation.date[0]
               : ''
           "
@@ -118,7 +118,6 @@ export default {
       loading: true,
       errored: false,
       error: "Error",
-      validated: false,
       validation: {},
       groupId: this.$route.params.groupId,
     };
@@ -148,7 +147,6 @@ export default {
             this.error = error.response.data.error;
           }
           if (error.response.data.data) {
-            this.validated = true;
             this.validation = error.response.data.data;
           }
           if (error.response.data.message) {

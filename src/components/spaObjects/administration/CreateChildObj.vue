@@ -127,7 +127,6 @@ export default {
       error: "Error",
       messaged: false,
       message: "",
-      validated: false,
       validation: {},
     };
   },
@@ -152,7 +151,6 @@ export default {
             this.error = error.response.data.error;
           }
           if (error.response.data.data) {
-            this.validated = true;
             this.validation = error.response.data.data;
           }
           if (error.response.data.message) {

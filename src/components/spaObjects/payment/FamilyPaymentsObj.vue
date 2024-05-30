@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-lg-6 mb-5">
-      <h2 style="margin-bottom: 0.75rem">
+      <h2 style="margin-bottom: 1.5rem">
         {{ $t("payments.title") }}
       </h2>
       <div class="alert alert-danger py-2" role="alert" v-if="errored">

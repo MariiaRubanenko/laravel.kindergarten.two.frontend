@@ -43,6 +43,7 @@
             </div>
           </div>
           <h4>{{ $t("teachers." + teacher.translationKey + ".name") }}</h4>
+          <h4>{{ $t("teachers." + teacher.translationKey + ".surname") }}</h4>
           <i>{{ $t("teachers." + teacher.translationKey + ".role") }}</i>
         </div>
       </div>

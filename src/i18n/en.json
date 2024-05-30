@@ -118,23 +118,28 @@
     "title": "Teachers",
     "tagline": "Meet Our Teachers",
     "Rubanenko": {
-      "name": "Maria Rubanenko",
+      "name": "Maria",
+      "surname": "Rubanenko",
       "role": "Backend Developer"
     },
     "Lisovyi": {
-      "name": "Nikita Lisovyi",
+      "name": "Nikita",
+      "surname": "Lisovyi",
       "role": "Frontend Developer"
     },
     "Holoha": {
-      "name": "Nikita Holoha",
+      "name": "Nikita",
+      "surname": "Holoha",
       "role": "Mobile Developer"
     },
     "Berezin": {
-      "name": "Pavlo Berezin",
+      "name": "Pavlo",
+      "surname": "Berezin",
       "role": "Mobile Developer"
     },
     "Sahan": {
-      "name": "Dmitro Sahan",
+      "name": "Dmitro",
+      "surname": "Sahan",
       "role": "Mobile Developer"
     }
   },
@@ -621,7 +626,7 @@
   },
 
   "appDownload": {
-    "title": "Mobile App",
+    "title": "Mobile App Download",
     "downloadApk": "Download APK",
     "app": {
       "name": "Happy Times",
@@ -639,10 +644,7 @@
       "Notify teachers about your child's absence in just one click.",
       "Add trusted individuals to pick up your child.",
       "Always know what's planned for the week.",
-      "Update personal information and photos.",
-      "Get to know information about your child's teachers.",
-      "Connect with other parents in groups via links.",
-      "Stay up-to-date with all news through our social networks."
+      "Get to know information about your child's teachers."
     ]
   },
 

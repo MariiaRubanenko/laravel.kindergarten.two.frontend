@@ -18,7 +18,7 @@
       :errorMessage="
         v$.name.$error
           ? v$.name.$errors[0].$message
-          : validated
+          : validation.name
           ? validation.name[0]
           : ''
       "
@@ -38,7 +38,6 @@
 <script>
 import Textbox from "@/components/Elements/TextBox.vue";
 import axios from "axios";
-//import router from "@/router/rouer.js";
 
 import { getCookies } from "@/api/request";
 
@@ -71,7 +70,6 @@ export default {
     return {
       errored: false,
       error: "Error",
-      validated: false,
       validation: {},
     };
   },
@@ -94,7 +92,6 @@ export default {
             this.error = error.response.data.error;
           }
           if (error.response.data.data) {
-            this.validated = true;
             this.validation = error.response.data.data;
           }
           if (error.response.data.message) {

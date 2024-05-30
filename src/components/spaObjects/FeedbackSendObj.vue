@@ -1,7 +1,7 @@
 <template>
   <div class="row justify-content-center">
     <div class="col-lg-7 mb-5">
-      <h2 style="margin-bottom: 0.75rem">
+      <h2 style="margin-bottom: 1.5rem">
         {{ $t("feedbackSend.title") }}
       </h2>
       <div class="alert alert-danger mb-3 py-2" role="alert" v-if="errored">
@@ -19,7 +19,7 @@
           :errorMessage="
             v$.text.$error
               ? v$.text.$errors[0].$message
-              : validated.text
+              : validation.text
               ? validation.text[0]
               : ''
           "
@@ -82,7 +82,6 @@ export default {
       error: "Error",
       messaged: false,
       message: "",
-      validated: false,
       validation: {},
       familyId: this.$route.params.familyId,
       userRole: localStorage.getItem("userRole"),
@@ -118,7 +117,6 @@ export default {
             this.error = error.response.data.error;
           }
           if (error.response.data.data) {
-            this.validated = true;
             this.validation = error.response.data.data;
           }
           if (error.response.data.message) {

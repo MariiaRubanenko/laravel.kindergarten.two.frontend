@@ -34,7 +34,7 @@
                 :errorMessage="
                   v$.email.$error
                     ? v$.email.$errors[0].$message
-                    : validated
+                    : validation.email
                     ? validation.email[0]
                     : ''
                 "
@@ -49,7 +49,7 @@
                 :errorMessage="
                   v$.password.$error
                     ? v$.password.$errors[0].$message
-                    : validated
+                    : validation.password
                     ? validation.password[0]
                     : ''
                 "
@@ -118,7 +118,6 @@ export default {
       error: "",
       messaged: false,
       message: "",
-      validated: false,
       validation: {},
     };
   },
@@ -159,19 +158,17 @@ export default {
           if (error.message) {
             this.errored = true;
             this.error = error.message;
-          } else {
-            if (error.response.data.error) {
-              this.errored = true;
-              this.error = error.response.data.error;
-            }
-            if (error.response.data.data) {
-              this.validated = true;
-              this.validation = error.response.data.data;
-            }
-            if (error.response.data.message) {
-              this.messaged = true;
-              this.message = error.response.data.message;
-            }
+          }
+          if (error.response.data.error) {
+            this.errored = true;
+            this.error = error.response.data.error;
+          }
+          if (error.response.data.data) {
+            this.validation = error.response.data.data;
+          }
+          if (error.response.data.message) {
+            this.messaged = true;
+            this.message = error.response.data.message;
           }
         }
       }

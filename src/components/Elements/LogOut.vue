@@ -12,7 +12,6 @@ import { logout } from "@/api/request";
 export default {
   data() {
     return {
-      errored: false,
       error: "Error",
     };
   },

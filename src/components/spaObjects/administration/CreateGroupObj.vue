@@ -21,7 +21,7 @@
           :errorMessage="
             v$.name.$error
               ? v$.name.$errors[0].$message
-              : validated
+              : validation.name
               ? validation.name[0]
               : ''
           "
@@ -78,7 +78,6 @@ export default {
       error: "Error",
       messaged: false,
       message: "",
-      validated: false,
       validation: {},
     };
   },
@@ -102,7 +101,6 @@ export default {
             this.error = error.response.data.error;
           }
           if (error.response.data.data) {
-            this.validated = true;
             this.validation = error.response.data.data;
           }
           if (error.response.data.message) {
