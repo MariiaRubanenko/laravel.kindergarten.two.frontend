@@ -156,19 +156,26 @@ export default {
         } catch (error) {
           console.error("LogIn Error", error);
           if (error.message) {
-            this.errored = true;
-            this.error = error.message;
-          }
-          if (error.response.data.error) {
-            this.errored = true;
-            this.error = error.response.data.error;
-          }
-          if (error.response.data.data) {
-            this.validation = error.response.data.data;
-          }
-          if (error.response.data.message) {
             this.messaged = true;
-            this.message = error.response.data.message;
+            this.message = error.message;
+          }
+          const response = error.response;
+          if (response) {
+            if (response.data) {
+              if (response.data.error) {
+                this.errored = true;
+                this.error = response.data.error;
+              }
+
+              if (response.data.data) {
+                this.validation = response.data.data;
+              }
+
+              if (response.data.message) {
+                this.messaged = true;
+                this.message = response.data.message;
+              }
+            }
           }
         }
       }
